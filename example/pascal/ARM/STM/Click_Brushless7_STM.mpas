@@ -1,0 +1,145 @@
+{
+Example for Brushless7 Click
+
+    Date          : May 2020.
+    Author        : Luka Filipovic
+
+Test configuration STM32 :
+    
+    MCU              : STM32F407ZG
+    Dev. Board       : Fusion for STM32 v8
+    ARM Compiler ver : v6.2.0.0
+
+-----
+
+Description :
+
+The application is composed of three sections :
+
+- System Initialization - Initialization of communication module
+- Application Initialization - Setts default configuration and sets 
+                               parameters for selected mode
+- Application Task - Setts 3 different speed of motor in span of 20 seconds
+
+Additional Functions :
+
+- void stop_start (  ) - Funcnction stops motor and then restores 
+                         previous mode of working
+
+}
+program Click_Brushless7_STM;
+
+uses Click_Brushless7_types, Click_Brushless7_config, Click_Brushless7_other_peripherals;
+
+var
+    demo_txt : array[30] of char; 
+    demo_type_data : uint8_t; 
+    
+procedure stop_start(); 
+begin
+    brushless7_control_mode_set(BRUSHLESS7_CTRL_TYPE_STOP); 
+    Delay_ms(1000); 
+    brushless7_control_mode_set(demo_type_data); 
+end;
+
+procedure system_init(); 
+begin
+    mikrobus_gpioInit(_MIKROBUS1, _MIKROBUS_INT_PIN, _GPIO_INPUT); 
+    mikrobus_gpioInit(_MIKROBUS1, _MIKROBUS_AN_PIN, _GPIO_INPUT); 
+    mikrobus_gpioInit(_MIKROBUS1, _MIKROBUS_RST_PIN, _GPIO_OUTPUT); 
+    mikrobus_gpioInit(_MIKROBUS1, _MIKROBUS_CS_PIN, _GPIO_OUTPUT); 
+    mikrobus_gpioInit(_MIKROBUS1, _MIKROBUS_PWM_PIN, _GPIO_OUTPUT); 
+    mikrobus_i2cInit(_MIKROBUS1, @BRUSHLESS7_I2C_CFG[0]); 
+    mikrobus_logInit(_LOG_USBUART, 9600); 
+    Delay_ms(100); 
+end;
+
+procedure application_init(); 
+var
+    error_flag : uint8_t; 
+begin
+    error_flag := 0;
+
+    mikrobus_logWrite('', _LOG_LINE); 
+    mikrobus_logWrite(' ***** APP INIT ***** ', _LOG_LINE); 
+    brushless7_i2c_driver_init(brushless7_obj_t(@_MIKROBUS1_GPIO), brushless7_obj_t(@_MIKROBUS1_I2C), BRUSHLESS7_SLAVE_ADDR); 
+    Delay_ms(100); 
+    brushless7_default_config(); 
+    demo_type_data := BRUSHLESS7_CTRL_TYPE_DUTY; 
+    brushless7_control_mode_set(demo_type_data); 
+    brushless7_rotating_direction(BRUSHLESS7_DIR_CW); 
+    if (BRUSHLESS7_CTRL_TYPE_DUTY = demo_type_data) then 
+    begin
+        error_flag := error_flag or brushless7_max_duty(95.0); 
+        error_flag := error_flag or brushless7_start_duty(5.0); 
+        error_flag := error_flag or brushless7_stop_duty(2.0); 
+        brushless7_change_duty(20); 
+        mikrobus_logWrite(' ----- DUTY CONTROL ----- ', _LOG_LINE); 
+    end
+    else 
+    begin
+        if (BRUSHLESS7_CTRL_TYPE_RPM = demo_type_data) then 
+        begin
+            error_flag := error_flag or brushless7_max_speed_rpm(BRUSHLESS7_MAX_SPEED_4096); 
+            error_flag := error_flag or brushless7_start_rpm(400); 
+            mikrobus_logWrite(' ----- RPM CONTROL ----- ', _LOG_LINE); 
+        end; 
+    end;
+    if (BRUSHLESS7_DEV_ERROR = error_flag) then 
+    begin
+        mikrobus_logWrite(' ----- ERROR ----- ', _LOG_LINE); 
+        while (1) do 
+        begin
+        end;
+    end; 
+    mikrobus_logWrite(' ***** APP TASK ***** ', _LOG_LINE); 
+end;
+
+procedure application_task(); 
+begin
+    if (BRUSHLESS7_CTRL_TYPE_DUTY = demo_type_data) then 
+    begin
+        mikrobus_logWrite(' ----- 20 ----- ', _LOG_LINE); 
+        stop_start(); 
+        brushless7_change_duty(20); 
+        Delay_ms(20000); 
+        mikrobus_logWrite(' ----- 40 ----- ', _LOG_LINE); 
+        stop_start(); 
+        brushless7_change_duty(40); 
+        Delay_ms(20000); 
+        mikrobus_logWrite(' ----- 8 ----- ', _LOG_LINE); 
+        stop_start(); 
+        brushless7_change_duty(8); 
+        Delay_ms(20000); 
+    end
+    else 
+    begin
+        if (BRUSHLESS7_CTRL_TYPE_RPM = demo_type_data) then 
+        begin
+            mikrobus_logWrite(' ----- 400 ----- ', _LOG_LINE); 
+            stop_start(); 
+            brushless7_start_rpm(400); 
+            Delay_ms(20000); 
+            mikrobus_logWrite(' ----- 1000 ----- ', _LOG_LINE); 
+            stop_start(); 
+            brushless7_start_rpm(1000); 
+            Delay_ms(20000); 
+            mikrobus_logWrite(' ----- 100 ----- ', _LOG_LINE); 
+            stop_start(); 
+            brushless7_start_rpm(100); 
+            Delay_ms(20000); 
+        end; 
+    end;
+end;
+
+begin
+    demo_txt := '';
+    demo_type_data := 0;
+
+    system_init(); 
+    application_init(); 
+    while (1) do 
+    begin
+        application_task(); 
+    end;
+end.

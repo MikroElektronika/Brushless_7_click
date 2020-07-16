@@ -1,0 +1,39 @@
+[DEVICE]
+Name=P32MX795F512L
+Clock=80000000
+[BUILD_TYPE]
+Value=0
+[FILES]
+Count=1
+File0=Click_Brushless7_PIC32.c
+[HEADERS]
+Count=3
+File0=Click_Brushless7_config.h
+File1=Click_Brushless7_types.h
+File2=Click_Brushless7_other_peripherals.h
+[PLDS]
+Count=1
+File0=Click_Brushless7.pld
+[Useses]
+File0=UART
+File1=Conversions
+File2=C_String
+File3=Brushless7_P32MX
+File4=easypicfusion_v7_P32MX795F512L
+File5=//SPI
+File6= I2C
+File7=//PWM
+File8=//ADC
+File9=//SPI_Remappable
+File10= I2C_Remappable
+File11=UART_Remappable
+File12=Peripheral_Pin_Select
+Count=13
+[SEARCH_PATH]
+Path0=..\..\..\mikroBUS BDF API\Uses\
+Path1=..\..\Uses\
+Count=2
+[HEADER_PATH]
+Path0=..\..\..\mikroBUS BDF API\Uses\
+Path1=..\..\Uses\
+Count=2

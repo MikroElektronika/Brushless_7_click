@@ -1,0 +1,28 @@
+[DEVICE]
+Name=FT900
+Clock=100000000
+[BUILD_TYPE]
+Value=0
+[FILES]
+Count=2
+File0=Click_Brushless7_FT90x.c
+File1=..\..\..\library\__brushless7_Driver.c
+[SEARCH_PATH]
+Count=3
+Path0=..\..\..\library\
+Path1=..\..\..\library\HAL\
+Path2=C:/Users/Public/Documents/Mikroelektronika/\mikroC PRO for FT90x\Packages\mikroBUS BDF API\Uses\
+[HEADER_PATH]
+Count=3
+Path0=..\..\..\library\
+Path1=..\..\..\library\HAL\
+Path2=C:/Users/Public/Documents/Mikroelektronika/\mikroC PRO for FT90x\Packages\mikroBUS BDF API\Uses\
+[HEADERS]
+Count=4
+File0=..\..\..\library\__brushless7_driver.h
+File1=Click_Brushless7_config.h
+File2=Click_Brushless7_types.h
+File3=Click_Brushless7_other_peripherals.h
+[PLDS]
+Count=1
+File0=Click_Brushless7.pld

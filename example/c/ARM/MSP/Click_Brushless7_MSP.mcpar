@@ -1,0 +1,46 @@
+[DEVICE]
+Name=MSP432P401R
+Clock=48000000
+[BUILD_TYPE]
+Value=0
+[FILES]
+Count=2
+File0=Click_Brushless7_MSP.c
+File1=..\..\..\..\library\__brushless7_driver.c
+[SEARCH_PATH]
+Count=3
+Path0=..\..\..\..\library\
+Path1=..\..\..\..\library\HAL\
+Path2=C:/Users/Public/Documents/Mikroelektronika/\mikroC PRO for ARM\Packages\mikroBUS BDF API\Uses\
+[HEADER_PATH]
+Count=3
+Path0=..\..\..\..\library\
+Path1=..\..\..\..\library\HAL\
+Path2=C:/Users/Public/Documents/Mikroelektronika/\mikroC PRO for ARM\Packages\mikroBUS BDF API\Uses\
+[HEADERS]
+Count=4
+File0=..\..\..\..\library\__brushless7_driver.h
+File1=Click_Brushless7_config.h
+File2=Click_Brushless7_types.h
+File3=Click_Brushless7_other_peripherals.h
+[PLDS]
+Count=1
+File0=Click_Brushless7.pld
+[PROGRAMMER_OPTIONS]
+Value=JTAG
+[PROGRAMMER_TYPE]
+Value=mikroE CodeGrip
+[DEBUGGER_TYPE]
+Value=default
+[NECTO_OPTIONS]
+NECTO_RESET_TYPE=0
+NECTO_ERASE_TYPE=0
+NECTO_CONNECTION=1
+NECTO_SPEED=0
+NECTO_HALT_AFTER=0
+NECTO_VERIFY_AFTER=0
+[AT_DEBUG_STARTUP]
+LOAD_BIN_TO_RAM=0
+START_EXEC_FROM_ADDR=0
+START_ADDR=-1
+

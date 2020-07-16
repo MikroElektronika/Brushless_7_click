@@ -1,0 +1,8 @@
+unit Click_Brushless7_config;
+
+uses Click_Brushless7_types;
+
+const
+    BRUSHLESS7_I2C_CFG : array[1] of uint32_t = (_I2C_100KHZ); 
+    
+end.

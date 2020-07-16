@@ -1,0 +1,83 @@
+[DEVICE]
+Name=P18F97J94
+Clock=64000000
+[BUILD_TYPE]
+Value=0
+
+[MEMORY_MODEL]
+Value=0
+[ACTIVE_TAB]
+Value=..\..\..\library\__brushless7_Driver.c
+[USE_EEPROM]
+Value=0
+[USE_HEAP]
+Value=0
+[HEAP_SIZE]
+Value=0
+[EEPROM_DEFINITION]
+Value=
+[FILES]
+File0=Click_Brushless7_PIC.c
+File1=..\..\..\library\__brushless7_Driver.c
+Count=2
+[BINARIES]
+Count=0
+[IMAGES]
+Count=0
+ActiveImageIndex=-1
+[OPENED_FILES]
+File0=Click_Brushless7_PIC.c
+File1=..\..\..\library\__brushless7_Driver.c
+Count=2
+[EEPROM]
+Count=0
+[ACTIVE_COMMENTS_FILES]
+Count=0
+[OTHER_FILES]
+Count=0
+[SEARCH_PATH]
+Path0=..\..\..\library\
+Path1=..\..\..\library\HAL\
+Path2=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Packages\mikroBUS BDF API\Uses\
+Count=3
+[HEADER_PATH]
+Path0=..\..\..\library\
+Path1=..\..\..\library\HAL\
+Path2=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Packages\mikroBUS BDF API\Uses\
+Count=3
+[HEADERS]
+File0=..\..\..\library\__brushless7_driver.h
+File1=Click_Brushless7_config.h
+File2=Click_Brushless7_types.h
+File3=Click_Brushless7_other_peripherals.h
+Count=4
+[PLDS]
+File0=Click_Brushless7.pld
+Count=1
+[Useses]
+File0=I2C
+File1=UART_Remappable
+File2=Peripheral_Pin_Select
+File3=Conversions
+File4=C_String
+File5=easypicpro_v8_P18F97J94
+Count=6
+[INTERRUPT_DEFS]
+VECTOR_MODE=0
+IVT_BASE=00000008
+[EXPANDED_NODES]
+0=Click_Brushless7_PIC.mcppi
+Count=1
+[LIB_EXPANDED_NODES]
+0=mikroE Libraries
+1=System Libraries
+2122=mikroSDK Libraries
+2123=mikroBUS BDF API
+Count=4
+[PROGRAMMER_TYPE]
+Value=CodeGrip for PIC
+[CODEGRIP_OPTIONS]
+CODEGRIP_SPEED=4
+CODEGRIP_VERIFY_AFTER=1
+CODEGRIP_SWBP_ENABLED=0
+CODEGRIP_PROGRAMMING_TYPE=Low voltage

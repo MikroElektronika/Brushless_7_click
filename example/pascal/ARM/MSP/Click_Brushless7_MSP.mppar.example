@@ -1,0 +1,52 @@
+[DEVICE]
+Name=MSP432P401R
+Clock=48000000
+[BUILD_TYPE]
+Value=0
+[FILES]
+Count=4
+File0=Click_Brushless7_MSP.mpas
+File1=Click_Brushless7_config.mpas
+File2=Click_Brushless7_types.mpas
+File3=Click_Brushless7_other_peripherals.mpas
+[HEADERS]
+Count=0
+[PLDS]
+Count=1
+File0=Click_Brushless7.pld
+[Useses]
+File0=UART
+File1=Conversions
+File2=String
+File3=Brushless7_MSP_M4
+File4=fusion_v8_MSP432P401RIPZ
+File5=//SPI
+File6= I2C
+File7=//PWM
+File8=//ADC
+Count=9
+[PROGRAMMER_OPTIONS]
+Value=JTAG
+[PROGRAMMER_TYPE]
+Value=mikroE CodeGrip
+[DEBUGGER_TYPE]
+Value=default
+[NECTO_OPTIONS]
+NECTO_RESET_TYPE=0
+NECTO_ERASE_TYPE=0
+NECTO_CONNECTION=1
+NECTO_SPEED=0
+NECTO_HALT_AFTER=0
+NECTO_VERIFY_AFTER=0
+[AT_DEBUG_STARTUP]
+LOAD_BIN_TO_RAM=0
+START_EXEC_FROM_ADDR=0
+START_ADDR=-1
+[SEARCH_PATH]
+Path0=..\..\..\mikroBUS BDF API\Uses\
+Path1=..\..\Uses\
+Count=2
+[HEADER_PATH]
+Path0=..\..\..\mikroBUS BDF API\Uses\
+Path1=..\..\Uses\
+Count=2

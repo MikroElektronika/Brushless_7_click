@@ -1,0 +1,4 @@
+module Click_Brushless7_other_peripherals
+
+include Click_Brushless7_types
+end.
